@@ -24,8 +24,10 @@ const useStyles = makeStyles({
 })
 
 
-const Detail = () => {
+const Detail = ({match}) => {
   const classes = useStyles()
+  const boardgameId = match.params.boardgameId
+  console.log(boardgameId)
 
   return (
     <Container>
