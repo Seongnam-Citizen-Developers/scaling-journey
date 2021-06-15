@@ -12,12 +12,10 @@ import Detail from './pages/detail'
 function App() {
   return (
     <Router>
-      <div className="App">
         <Switch>
-          <Route path="/" component={Akinator} />
           <Route path="/detail" component={Detail} />
+          <Route path="/" component={Akinator} />
         </Switch>
-      </div>
     </Router>
   );
 }
