@@ -1,25 +1,94 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { getBoardgames } from "../lib/boardgameAtlas/apis";
 import Button from '@material-ui/core/Button';
-
+import Players from "../components/akinator/Players"
+import PlayTime from "../components/akinator/PlayTime"
+import Category from "../components/akinator/Category"
+import Mechanics from "../components/akinator/Mechanics"
+import NoResult from "../components/akinator/NoResult"
+import { game } from "../lib/boardgameAtlas/interfaces";
 const Akinator: React.FC = () => {
 
   const styles = useStyles()
+  const [phase, setPhase] = useState<"category"|"player"|"playTime"|"mechanics"|"request"|"noResult">('category')
   const [url, setUrl] = useState<string>('')
-  async function done() {
-    const games = await getBoardgames({
-      name: "katan"
-    })
+  const [numOfPeople, setNumOfPeople] = useState<number>()
+  const [gnt, setGnt] = useState<number>()
+  const [lxt, setLxt] = useState<number>()
+  const [category, setCategory] = useState<string>()
+  const [mechanics, setMechanics] = useState<string>()
+  const [games, setGames] = useState<game[]>([])
+
+  async function requestGetBoardgame(config: any) {
+    const games = await getBoardgames(config)
     console.log(games)
-    setUrl(games?.[0] ? games?.[0].image_url : '')
+    if (games.length === 0) {
+      setPhase('noResult')
+    } else {
+      setGames(games)
+    }
   }
+  useEffect(()=>{
+    setUrl(games?.[0] ? games?.[0].image_url : '')
+  }, [games])
   
+  useEffect(()=>{
+    if (phase==="request") {
+      const config = {
+        mechanics,
+        categories: category,
+        gt_min_playtime: gnt ? gnt-1 : undefined,
+        lt_max_playtime: lxt ? lxt+1 : undefined,
+        gt_max_players: numOfPeople ? numOfPeople-1 : undefined,
+        lt_min_players: numOfPeople ? numOfPeople+1 : undefined,
+        limit: 1
+      }
+      requestGetBoardgame(config)
+    } else if (phase==="noResult") {
+      const config = {
+        categories: category,
+        gt_min_playtime: gnt ? gnt-1 : undefined,
+        lt_max_playtime: lxt ? lxt+1 : undefined,
+        gt_max_players: numOfPeople ? numOfPeople-1 : undefined,
+        lt_min_players: numOfPeople ? numOfPeople+1 : undefined,
+        limit: 3
+      }
+      requestGetBoardgame(config)
+    }
+  },[phase])
+
   // getBoardgames
   return (
     <>
-    <Button onClick={done}>버튼</Button>
-    <img src={url} alt="" width="100%" />
+      {
+        phase === "category" 
+          ? (<>
+            <Category setPhase={setPhase} category={category} setCategory={setCategory} />
+          </>) 
+          : phase === "player" 
+            ? (<>
+              <Players setPhase={setPhase} numOfPeople={numOfPeople} setNumOfPeople={setNumOfPeople} />
+            </>)
+            :  phase === "playTime" 
+              ? (<>
+                <PlayTime setPhase={setPhase} gnt={gnt} setGnt={setGnt} lxt={lxt} setLxt={setLxt} />
+              </>)
+              : phase === "mechanics" 
+                ? (<>
+                  <Mechanics setPhase={setPhase} mechanics={mechanics} setMechanics={setMechanics} />
+                </>)
+                : (<>
+                  <NoResult games={games}/>
+                </>)
+
+      }
+      {/* <Button onClick={onSubmit}>사진</Button> */}
+      <Button onClick={()=>{
+        setGames([])
+        setPhase("category")
+      }}>리셋</Button>
+      <img src={url} alt="" width="100%" />
     </>
   )
 }
