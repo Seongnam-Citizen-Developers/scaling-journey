@@ -7,6 +7,9 @@ const useStyles = makeStyles({
   reviewArea :{
     padding : "3% 3% 3% 3%",
     border : "2px solid red"
+  },
+  test :{
+    width: "100%"
   }
 })
 
@@ -31,7 +34,7 @@ const Reviews = () =>{
       <ol>
         {reviewItems}
       </ol>
-      <FormControl>
+      <FormControl className={classes.test}>
         <Input 
           placeholder='댓글 입력' 
           fullWidth={true}
