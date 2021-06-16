@@ -1,7 +1,3 @@
-// import React from 'react'
-import axios from 'axios'
-
-
 export function getgameDetail(game){
 
   const image_url = game.image_url

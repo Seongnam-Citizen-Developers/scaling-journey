@@ -42,8 +42,9 @@ const Detail = ({match}) => {
       // console.log('result',result)
       const gamedata = await getgameDetail(result[0])
       // console.log('ㅎㅎ',gamedata)
-      // const youtubeURL = await YoutubeRequest(gamedata.name)
-      setgameInfo({...gamedata,youtubeURL:"https://www.youtube.com/embed/deA9MuH6ijA"})
+      const youtubeURL = await YoutubeRequest(gamedata.name)
+      // setgameInfo({...gamedata,youtubeURL:"https://www.youtube.com/embed/deA9MuH6ijA"})
+      setgameInfo({...gamedata,youtubeURL})
       setloading(true)
       // console.log(game)
     }
