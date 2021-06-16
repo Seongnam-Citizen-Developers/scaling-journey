@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
         <Switch>
-          <Route path="/detail" component={Detail} />
+          <Route path="/detail/:boardgameId" component={Detail} />
           <Route path="/" component={Akinator} />
         </Switch>
     </Router>
