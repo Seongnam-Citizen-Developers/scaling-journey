@@ -18,11 +18,11 @@ const useStyles = makeStyles({
 })
 
 
-const GameDetails = ()=>{
+const GameDetails = (props)=>{
   const classes = useStyles()
   return(
     <div className={classes.detailArea}>
-      <img className={classes.image} src="https://cdn.shopify.com/s/files/1/0513/4077/1515/products/catan-board-game.jpg?v=1609629082" alt="보드게임"></img>
+      <img className={classes.image} src={props.image_url} alt="보드게임"></img>
       
       <h3 className={classes.videoAlign}>
         룰 설명

@@ -1,9 +1,12 @@
-import React from "react";
+import React from "react"
+import { useState, useEffect } from "react";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import GameDetails from "../components/detail/gameDetails";
 import Reviews from "../components/detail/Reviews";
+import { getgameDetail } from "../components/detail/Helper";
 
+import {getBoardgames} from "../lib/boardgameAtlas/apis"
 
 
 const useStyles = makeStyles({
@@ -27,16 +30,45 @@ const useStyles = makeStyles({
 const Detail = ({match}) => {
   const classes = useStyles()
   const boardgameId = match.params.boardgameId
-  console.log(boardgameId)
+  const [game, setgameInfo] = useState({image_url:'',name:''})
+  const [loading, setloading] = useState(false)
+
+
+  useEffect(()=>{
+    const fetchData = async()=>{ 
+      const result = await getBoardgames({ids:boardgameId})
+      console.log('result',result)
+      const gamedata = await getgameDetail(result[0])
+      console.log('ㅎㅎ',gamedata)
+      console.log(game.name)
+      setloading(true)
+      setgameInfo(gamedata)
+
+    }
+    fetchData()
+  },[boardgameId])
 
   return (
     <Container>
       <div className={classes.box}>
-        <h1 className={classes.text}>게임 제목</h1>
-        <hr></hr>
-        {/* 추후에 pc 화면 구현할때 img랑 iframe을 flex 정렬하기 위해 div로 묶음 아니다 그냥 미리 컴포로 빼버릴까??*/}
-        <GameDetails></GameDetails>
-        <Reviews></Reviews>
+        {!loading ? 
+        <>
+          <h1 className={classes.text}>로딩중</h1>
+
+        </> :
+        <>
+          <h1 className={classes.text}>{game.name}</h1>
+          <hr></hr>
+          <GameDetails
+            image_url = {game.image_url}
+        
+          ></GameDetails>
+          <Reviews
+          
+          ></Reviews>
+        </>
+      }
+        
       </div>
     </Container>
   )
