@@ -66,7 +66,7 @@ const Detail = ({match}) => {
             youtubeURL = {game.youtubeURL}
           ></GameDetails>
           <Reviews
-          
+            boardgameId = {boardgameId}
           ></Reviews>
         </>
       }

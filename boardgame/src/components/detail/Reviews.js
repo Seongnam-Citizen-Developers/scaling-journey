@@ -1,40 +1,54 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { FormControl,Input,Button } from '@material-ui/core'
+import getReview from '../../lib/sungnamDevelopers/apis'
 
 const useStyles = makeStyles({
   reviewArea :{
     padding : "3% 3% 3% 3%",
     border : "2px solid red"
   },
-  test :{
+  formArea :{
     width: "100%"
   }
 })
 
 
 
-const Reviews = () =>{
+const Reviews = (props) =>{
   const classes = useStyles()
-  const [reviews, setview] = useState([{id:1, content:'dddd'},{id:2, content:'asee'}])
+  const [reviews, setview] = useState([])
+
+  useEffect(() =>{
+    const fetchData = async()=>{
+      const fetchedReviews = await getReview(props.boardgameId)
+      setview(fetchedReviews)
+      
+    }
+    fetchData()
+  },[]) 
+
+
+
   const reviewItems = reviews.length > 0 ?
     reviews.map(review =>
       <li
         key={review.id}
       >
-        {review.content}
+        {review.id} : {review.Content}
       </li>
       ) : 
       <div>
         <p>아직 댓글이 없음둥</p>
       </div>
+
   return(
     <div className={classes.reviewArea}>
-      <ol>
+      <ul>
         {reviewItems}
-      </ol>
-      <FormControl className={classes.test}>
+      </ul>
+      <FormControl className={classes.formArea}>
         <Input 
           placeholder='댓글 입력' 
           fullWidth={true}
