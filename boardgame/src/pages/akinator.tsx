@@ -12,7 +12,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 const Akinator: React.FC = () => {
 
-  const styles = useStyles()
+  // const styles = useStyles()
   const [phase, setPhase] = useState<"category"|"player"|"playTime"|"mechanics"|"request"|"noResult">('category')
   const [numOfPeople, setNumOfPeople] = useState<number>()
   const [gnt, setGnt] = useState<number>()
@@ -23,6 +23,7 @@ const Akinator: React.FC = () => {
   const history = useHistory()
   const location = useLocation()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function requestGetBoardgame(config: any) {
     const games = await getBoardgames(config)
     console.log(games)
@@ -68,7 +69,7 @@ const Akinator: React.FC = () => {
       }
       requestGetBoardgame(config)
     }
-  },[phase,category,gnt,lxt,numOfPeople])
+  },[phase, category, gnt, lxt, numOfPeople, mechanics, requestGetBoardgame])
 
   const reset = () => {
     setNumOfPeople(undefined)
