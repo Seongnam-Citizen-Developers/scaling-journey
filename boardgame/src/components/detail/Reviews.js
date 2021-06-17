@@ -40,7 +40,6 @@ const Reviews = (props) =>{
     fetchData()
   },[currentPage]) 
   
-  // console.log('reviews',reviews)
 
   const onChange = (e) =>{
     setInput(e.target.value)
@@ -101,11 +100,6 @@ const Reviews = (props) =>{
     <div className={classes.reviewArea}>
       <h3>댓글 목록</h3>
       <hr></hr>
-      {/* <Pagination 
-        count={maxPage}
-        onChange = {pageChange}
-        // showLastButton = {true}
-        ></Pagination> */}
       <ul>
         {reviewItems}
       </ul>
