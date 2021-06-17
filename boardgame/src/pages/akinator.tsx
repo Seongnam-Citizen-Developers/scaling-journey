@@ -8,7 +8,7 @@ import Category from "../components/akinator/Category"
 import Mechanics from "../components/akinator/Mechanics"
 import NoResult from "../components/akinator/NoResult"
 import { game } from "../lib/boardgameAtlas/interfaces";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Akinator: React.FC = () => {
 
@@ -21,7 +21,8 @@ const Akinator: React.FC = () => {
   const [mechanics, setMechanics] = useState<string>()
   const [games, setGames] = useState<game[]>([])
   const history = useHistory()
-  
+  const location = useLocation()
+
   async function requestGetBoardgame(config: any) {
     const games = await getBoardgames(config)
     console.log(games)
@@ -38,7 +39,7 @@ const Akinator: React.FC = () => {
       setPhase('noResult')
     } else {
       if (phase !== "noResult") {
-        history.push(`/detail/${kGames[0].id}`, )
+        history.push(`${location.pathname}detail/${kGames[0].id}`, )
       } else {
         setGames(kGames)
       }

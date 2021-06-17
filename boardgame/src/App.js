@@ -7,10 +7,12 @@ import {
 } from "react-router-dom";
 import Akinator from './pages/akinator';
 import Detail from './pages/detail'
+import { createHistory } from 'history'
+import { useRouterHistory } from 'react-router'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/scaling-journey">
         <Switch>
           <Route path="/detail/:boardgameId" component={Detail} />
           <Route path="/" component={Akinator} />

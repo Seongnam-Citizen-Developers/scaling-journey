@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 import { game } from "../../lib/boardgameAtlas/interfaces"
 
 interface NoResultProps {
@@ -13,7 +13,7 @@ const NoResult: React.FC<NoResultProps> = ({games}) => {
   //   setPhase('request')
   // }
   const history = useHistory()
-
+  const location = useLocation()
   return games.length === 0 ? (
     <>
       우린조졌어 아무것도 없어 
@@ -22,7 +22,7 @@ const NoResult: React.FC<NoResultProps> = ({games}) => {
     <>
       {games.map((game, index) => 
         index < 3 && (<div key={index} onClick={()=>{
-          history.push(`/detail/${game.id}`, )
+          history.push(`${location.pathname}detail/${game.id}`, )
         }}>
           <img src={game.image_url} alt="" width="40%" />
           {game.name}
