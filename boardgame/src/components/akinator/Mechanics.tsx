@@ -38,7 +38,7 @@ const Mechanics: React.FC<MechanicsProps> = ({setPhase, mechanics, setMechanics}
     <>
     {mechanicsIdList.map((mechanicId, index)=>(
       <div key={index}>
-        <Button variant='outlined' onClick={onClick} value={mechanicId}>{mechanicsMappingTable[mechanicId].name}</Button>
+        <Button variant='outlined' onClick={onClick} value={mechanicId}>{mechanicsMappingTable[mechanicId].comment}</Button>
       </div>
     ))}
     </>
