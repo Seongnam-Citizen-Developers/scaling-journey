@@ -1,10 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useState,useEffect } from 'react'
+import { useState } from 'react'
 import { Input,Button } from '@material-ui/core'
-import { Pagination } from '@material-ui/lab';
-import {getReview,postReview} from '../../lib/sungnamDevelopers/apis'
-import { reviewPager } from './Helper';
+import {postReview} from '../../lib/sungnamDevelopers/apis'
 
 const useStyles = makeStyles({
   reviewArea :{
@@ -20,27 +18,21 @@ const useStyles = makeStyles({
 
 const Reviews = (props) =>{
   const classes = useStyles()
-  const [reviews, setview] = useState([])
-  const [currentPage, setCurrentPage] = useState(0)
-  const [maxPage,setMaxPage] = useState(0)
+  // const [reviews, setview] = useState([])
+  const reviews = props.reviews
   const [userInput, setInput] = useState('')
 
-  useEffect(() =>{
-    const fetchData = async()=>{
-      const fetchedReviews = await getReview(props.boardgameId)
-      const adjustedReviews = reviewPager(fetchedReviews)
-      console.log('adjustedReviews',adjustedReviews)
-      setMaxPage(adjustedReviews.length)
-      console.log('maxPage',maxPage)
-      setview(adjustedReviews.pageReviews[currentPage])
-      // setview(adjustedReviews.pageReviews[maxPage])
-      console.log('reviews',reviews)
+  // useEffect(() =>{
+  //   const fetchData = async()=>{
+  //     const fetchedReviews = await getReview(props.boardgameId)
+  //     // setview(adjustedReviews.pageReviews[maxPage])
+  //     console.log('reviews',reviews)
       
-    }
-    fetchData()
-  },[currentPage]) 
+  //   }
+  //   fetchData()
+  // },[]) 
   
-  // console.log('reviews',reviews)
+
 
   const onChange = (e) =>{
     setInput(e.target.value)
@@ -53,10 +45,10 @@ const Reviews = (props) =>{
       return
     }else{
       // const res = await postReview(props.boardgameId,userInput)
+      console.log('gameId',props.boardgameId)
       await postReview(props.boardgameId,userInput)
-      const test = await getReview(props.boardgameId)
-      // setview([...reviews,res])
-      console.log(test)
+      await props.updateReviews()
+
       clearInput()
     }
   
@@ -67,11 +59,7 @@ const Reviews = (props) =>{
     Input.value = ''
   }
 
-  const pageChange = (e,pagenumber)=>{
-    console.log(e)
-    const newPage = pagenumber -1
-    setCurrentPage(newPage)
-  }
+
 
   const reviewItems = reviews.length > 0 ?
     reviews.map(review =>
@@ -85,15 +73,6 @@ const Reviews = (props) =>{
         <p>아직 댓글이 없음둥</p>
       </div>
 
-  const pagination = maxPage > 0 ? 
-  <Pagination 
-  count={maxPage}
-  onChange = {pageChange}
-  // showLastButton = {true}
-  ></Pagination>
-  :<div>
-    테스트
-  </div>
 
 
 
@@ -101,15 +80,9 @@ const Reviews = (props) =>{
     <div className={classes.reviewArea}>
       <h3>댓글 목록</h3>
       <hr></hr>
-      {/* <Pagination 
-        count={maxPage}
-        onChange = {pageChange}
-        // showLastButton = {true}
-        ></Pagination> */}
       <ul>
         {reviewItems}
       </ul>
-        {pagination}
       <form className={classes.formArea} onSubmit={onSubmit}>
         <Input 
           placeholder='댓글 입력' 

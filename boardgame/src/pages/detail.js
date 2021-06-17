@@ -6,7 +6,7 @@ import GameDetails from "../components/detail/gameDetails";
 import Reviews from "../components/detail/Reviews";
 import { getgameDetail } from "../components/detail/Helper";
 import YoutubeRequest from "../lib/Youtube/apis";
-
+import { getReview } from "../lib/sungnamDevelopers/apis";
 import {getBoardgames} from "../lib/boardgameAtlas/apis"
 
 
@@ -34,21 +34,35 @@ const Detail = ({match}) => {
   const boardgameId = match.params.boardgameId
   const [game, setgameInfo] = useState({image_url:'',name:'',youtubeURL:''})
   const [loading, setloading] = useState(false)
-
+  const [reviews, setReview] = useState([])
 
   useEffect(()=>{
     const fetchData = async()=>{ 
       const result = await getBoardgames({ids:boardgameId})
       // console.log('result',result)
-      const gamedata = await getgameDetail(result[0])
+      const gamedata = getgameDetail(result[0])
       // console.log('게임디테일',gamedata)
       const youtubeURL = await YoutubeRequest(gamedata.name)
+      const reviews = await getReview(boardgameId)
+
+      setReview(reviews)
+      
+      
       setgameInfo({...gamedata,youtubeURL:"https://www.youtube.com/embed/deA9MuH6ijA"})
       // setgameInfo({...gamedata,youtubeURL})
       setloading(true)
     }
     fetchData()
   },[boardgameId])
+
+
+  const updateReviews = async () =>{
+    console.log('실행중임~')
+    const reviews = await getReview(boardgameId)
+    setReview(reviews)
+    console.log('reviews',reviews)
+  }
+
 
   return (
     <Container>
@@ -66,6 +80,8 @@ const Detail = ({match}) => {
             youtubeURL = {game.youtubeURL}
           ></GameDetails>
           <Reviews
+            reviews= {reviews}
+            updateReviews = {updateReviews}
             boardgameId = {boardgameId}
           ></Reviews>
         </>
