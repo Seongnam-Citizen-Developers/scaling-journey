@@ -8,16 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Change root
-        run: cd boardgame
-        
-      - name: Where am I
-        run: ls -l
         
       - name: Set up Node.js
         uses: actions/setup-node@master
         with:
           node-version: 12.x
+      - name: Where am I
+        run: cd boardgame & ls -l
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
@@ -26,10 +23,10 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-build-${{ runner.OS }}-
       - name: Install dependencies
-        run: npm install --prod --pure-lockfile
+        run: cd boardgame & npm install --prod --pure-lockfile
 
       - name: Build
-        run: npm run build
+        run: cd boardgame & npm run build
         env:
           NODE_ENV: production
       - name: Deploy
