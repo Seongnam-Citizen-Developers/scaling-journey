@@ -8,6 +8,8 @@ import Category from "../components/akinator/Category"
 import Mechanics from "../components/akinator/Mechanics"
 import NoResult from "../components/akinator/NoResult"
 import { game } from "../lib/boardgameAtlas/interfaces";
+import { useHistory } from 'react-router-dom';
+
 const Akinator: React.FC = () => {
 
   const styles = useStyles()
@@ -19,17 +21,30 @@ const Akinator: React.FC = () => {
   const [category, setCategory] = useState<string>()
   const [mechanics, setMechanics] = useState<string>()
   const [games, setGames] = useState<game[]>([])
-
+  const history = useHistory()
+  
   async function requestGetBoardgame(config: any) {
     const games = await getBoardgames(config)
     console.log(games)
-    if (games.length === 0) {
+
+    const pattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    const kGames = games.filter(game => { 
+      return (game.tags.filter(tag => {
+        return pattern.test(tag)
+      }).length !== 0)
+    })
+    
+
+    if (kGames.length === 0) {
       setPhase('noResult')
     } else {
-      setGames(games)
+      if (phase !== "noResult") {
+        history.push(`/detail/${kGames[0].id}`, )
+      }
     }
   }
   useEffect(()=>{
+
     setUrl(games?.[0] ? games?.[0].image_url : '')
   }, [games])
   
@@ -42,7 +57,6 @@ const Akinator: React.FC = () => {
         lt_max_playtime: lxt ? lxt+1 : undefined,
         gt_max_players: numOfPeople ? numOfPeople-1 : undefined,
         lt_min_players: numOfPeople ? numOfPeople+1 : undefined,
-        limit: 1
       }
       requestGetBoardgame(config)
     } else if (phase==="noResult") {
@@ -52,7 +66,6 @@ const Akinator: React.FC = () => {
         lt_max_playtime: lxt ? lxt+1 : undefined,
         gt_max_players: numOfPeople ? numOfPeople-1 : undefined,
         lt_min_players: numOfPeople ? numOfPeople+1 : undefined,
-        limit: 3
       }
       requestGetBoardgame(config)
     }
