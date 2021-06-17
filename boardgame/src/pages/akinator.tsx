@@ -68,7 +68,7 @@ const Akinator: React.FC = () => {
       }
       requestGetBoardgame(config)
     }
-  },[phase])
+  },[phase,category,gnt,lxt,numOfPeople])
 
   const reset = () => {
     setNumOfPeople(undefined)
