@@ -2,7 +2,9 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useState,useEffect } from 'react'
 import { Input,Button } from '@material-ui/core'
+import { Pagination } from '@material-ui/lab';
 import {getReview,postReview} from '../../lib/sungnamDevelopers/apis'
+import { reviewPager } from './Helper';
 
 const useStyles = makeStyles({
   reviewArea :{
@@ -19,23 +21,27 @@ const useStyles = makeStyles({
 const Reviews = (props) =>{
   const classes = useStyles()
   const [reviews, setview] = useState([])
+  const [currentPage, setCurrentPage] = useState(0)
+  const [maxPage,setMaxPage] = useState(0)
   const [userInput, setInput] = useState('')
 
   useEffect(() =>{
     const fetchData = async()=>{
       const fetchedReviews = await getReview(props.boardgameId)
-      setview(fetchedReviews)
+      const adjustedReviews = reviewPager(fetchedReviews)
+      console.log(adjustedReviews)
+      setMaxPage(adjustedReviews.length)
+      // setview(adjustedReviews.pageReviews[currentPage])
+      setview(adjustedReviews.pageReviews[maxPage])
       
     }
     fetchData()
-  },[]) 
+  },[currentPage]) 
   
-  console.log('reviews',reviews)
+  // console.log('reviews',reviews)
 
   const onChange = (e) =>{
-    // console.log(e.target.value)
     setInput(e.target.value)
-    console.log(userInput)
   }
 
   const onSubmit = async (e) =>{
@@ -56,6 +62,11 @@ const Reviews = (props) =>{
     Input.value = ''
   }
 
+  const pageChange = (e,pagenumber)=>{
+    console.log(e)
+    const newPage = pagenumber -1
+    setCurrentPage(newPage)
+  }
 
   const reviewItems = reviews.length > 0 ?
     reviews.map(review =>
@@ -69,10 +80,16 @@ const Reviews = (props) =>{
         <p>아직 댓글이 없음둥</p>
       </div>
 
+
   return(
     <div className={classes.reviewArea}>
       <h3>댓글 목록</h3>
       <hr></hr>
+      <Pagination 
+        count={maxPage}
+        onChange = {pageChange}
+        // showLastButton = {true}
+        ></Pagination>
       <ul>
         {reviewItems}
       </ul>
