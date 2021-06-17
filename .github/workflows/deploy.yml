@@ -9,6 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Change root
+        run: cd boardgame
+        
+      - name: Where am I
         run: ls -l
         
       - name: Set up Node.js
