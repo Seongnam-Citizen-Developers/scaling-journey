@@ -34,5 +34,5 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{secrets.GITHUB_TOKEN}}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./public
+          PUBLISH_DIR: ./boardgame/public
           SCRIPT_MODE: true
