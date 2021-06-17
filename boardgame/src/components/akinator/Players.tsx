@@ -14,7 +14,7 @@ const Players: React.FC<PlayersProps> = ({setPhase, setNumOfPeople, numOfPeople}
   const onClick = (data: any) => {
     console.log(data.currentTarget.value)
     setPhase('playTime')
-    setNumOfPeople(data.currentTarget.value)
+    setNumOfPeople(Number(data.currentTarget.value))
   }
   
   return (

@@ -1,8 +1,6 @@
 import React, { MouseEventHandler } from "react";
 import Button from '@material-ui/core/Button';
 
-
-
 const categoryMappingTable: { [key: string]: {name: string; comment: string} } = {
    "hBqZ3Ar4RJ": {
      name: "Abstract",
