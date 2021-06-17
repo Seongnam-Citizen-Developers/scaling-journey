@@ -3,7 +3,7 @@ import axios from "axios"
 const YoutubeRequest = async (keyword) =>{
   const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search'
   const KEY = process.env.REACT_APP_YOUTUBE_API_KEY
-  const searchword = keyword + ' 룰'
+  const searchword = `보드게임 ${keyword} 룰`
 
   const config = {
     params: {
