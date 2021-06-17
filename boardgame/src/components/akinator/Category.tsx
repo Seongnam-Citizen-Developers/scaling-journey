@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import Button from '@material-ui/core/Button';
 
 const categoryMappingTable: { [key: string]: {name: string; comment: string} } = {
