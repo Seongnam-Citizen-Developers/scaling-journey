@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 12.x
       - name: Where am I
-        run: cd boardgame & ls -l
+        run: cd boardgame && ls -l
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
@@ -23,10 +23,10 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-build-${{ runner.OS }}-
       - name: Install dependencies
-        run: cd boardgame & npm install --prod --pure-lockfile
+        run: cd boardgame && npm install --prod --pure-lockfile
 
       - name: Build
-        run: cd boardgame & npm run build
+        run: cd boardgame && npm run build
         env:
           NODE_ENV: production
       - name: Deploy
