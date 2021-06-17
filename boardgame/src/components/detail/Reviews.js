@@ -29,10 +29,12 @@ const Reviews = (props) =>{
     const fetchData = async()=>{
       const fetchedReviews = await getReview(props.boardgameId)
       const adjustedReviews = reviewPager(fetchedReviews)
-      console.log(adjustedReviews)
+      console.log('adjustedReviews',adjustedReviews)
       setMaxPage(adjustedReviews.length)
-      // setview(adjustedReviews.pageReviews[currentPage])
-      setview(adjustedReviews.pageReviews[maxPage])
+      console.log('maxPage',maxPage)
+      setview(adjustedReviews.pageReviews[currentPage])
+      // setview(adjustedReviews.pageReviews[maxPage])
+      console.log('reviews',reviews)
       
     }
     fetchData()
@@ -50,8 +52,11 @@ const Reviews = (props) =>{
       alert('댓글을 입력해주세요')
       return
     }else{
-      const res = await postReview(props.boardgameId,userInput)
-      setview([...reviews,res])
+      // const res = await postReview(props.boardgameId,userInput)
+      await postReview(props.boardgameId,userInput)
+      const test = await getReview(props.boardgameId)
+      // setview([...reviews,res])
+      console.log(test)
       clearInput()
     }
   
@@ -80,19 +85,31 @@ const Reviews = (props) =>{
         <p>아직 댓글이 없음둥</p>
       </div>
 
+  const pagination = maxPage > 0 ? 
+  <Pagination 
+  count={maxPage}
+  onChange = {pageChange}
+  // showLastButton = {true}
+  ></Pagination>
+  :<div>
+    테스트
+  </div>
+
+
 
   return(
     <div className={classes.reviewArea}>
       <h3>댓글 목록</h3>
       <hr></hr>
-      <Pagination 
+      {/* <Pagination 
         count={maxPage}
         onChange = {pageChange}
         // showLastButton = {true}
-        ></Pagination>
+        ></Pagination> */}
       <ul>
         {reviewItems}
       </ul>
+        {pagination}
       <form className={classes.formArea} onSubmit={onSubmit}>
         <Input 
           placeholder='댓글 입력' 
