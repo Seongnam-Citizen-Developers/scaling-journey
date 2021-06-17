@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/scaling-journey/static/css/main.9d5b29c0.chunk.css",
-    "main.js": "/scaling-journey/static/js/main.b34c1066.chunk.js",
-    "main.js.map": "/scaling-journey/static/js/main.b34c1066.chunk.js.map",
+    "main.js": "/scaling-journey/static/js/main.28cb34e6.chunk.js",
+    "main.js.map": "/scaling-journey/static/js/main.28cb34e6.chunk.js.map",
     "runtime-main.js": "/scaling-journey/static/js/runtime-main.41d668d6.js",
     "runtime-main.js.map": "/scaling-journey/static/js/runtime-main.41d668d6.js.map",
-    "static/js/2.df2190c8.chunk.js": "/scaling-journey/static/js/2.df2190c8.chunk.js",
-    "static/js/2.df2190c8.chunk.js.map": "/scaling-journey/static/js/2.df2190c8.chunk.js.map",
+    "static/js/2.d7ef9cb6.chunk.js": "/scaling-journey/static/js/2.d7ef9cb6.chunk.js",
+    "static/js/2.d7ef9cb6.chunk.js.map": "/scaling-journey/static/js/2.d7ef9cb6.chunk.js.map",
     "static/js/3.98e30e13.chunk.js": "/scaling-journey/static/js/3.98e30e13.chunk.js",
     "static/js/3.98e30e13.chunk.js.map": "/scaling-journey/static/js/3.98e30e13.chunk.js.map",
     "index.html": "/scaling-journey/index.html",
     "static/css/main.9d5b29c0.chunk.css.map": "/scaling-journey/static/css/main.9d5b29c0.chunk.css.map",
-    "static/js/2.df2190c8.chunk.js.LICENSE.txt": "/scaling-journey/static/js/2.df2190c8.chunk.js.LICENSE.txt"
+    "static/js/2.d7ef9cb6.chunk.js.LICENSE.txt": "/scaling-journey/static/js/2.d7ef9cb6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.41d668d6.js",
-    "static/js/2.df2190c8.chunk.js",
+    "static/js/2.d7ef9cb6.chunk.js",
     "static/css/main.9d5b29c0.chunk.css",
-    "static/js/main.b34c1066.chunk.js"
+    "static/js/main.28cb34e6.chunk.js"
   ]
 }
