@@ -16,11 +16,12 @@ const PlayTime: React.FC<PlayTimeProps> = ({setPhase, gnt, setGnt, lxt, setLxt})
   
   const onMinClick = (data: any) => {
     console.log(data.currentTarget.value)
-    setGnt(data.currentTarget.value)
+    setGnt(Number(data.currentTarget.value))
   }
+  
   const onMaxClick = (data: any) => {
     console.log(data.currentTarget.value)
-    setLxt(data.currentTarget.value)
+    setLxt(Number(data.currentTarget.value))
   }
   
   return (
