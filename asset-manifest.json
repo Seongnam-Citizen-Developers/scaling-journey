@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Seongnam-Citizen-Developers/scaling-journey/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/Seongnam-Citizen-Developers/scaling-journey/static/js/main.bf2d3b3f.chunk.js",
+    "main.js.map": "/Seongnam-Citizen-Developers/scaling-journey/static/js/main.bf2d3b3f.chunk.js.map",
+    "runtime-main.js": "/Seongnam-Citizen-Developers/scaling-journey/static/js/runtime-main.f07ebdb9.js",
+    "runtime-main.js.map": "/Seongnam-Citizen-Developers/scaling-journey/static/js/runtime-main.f07ebdb9.js.map",
+    "static/js/2.df2190c8.chunk.js": "/Seongnam-Citizen-Developers/scaling-journey/static/js/2.df2190c8.chunk.js",
+    "static/js/2.df2190c8.chunk.js.map": "/Seongnam-Citizen-Developers/scaling-journey/static/js/2.df2190c8.chunk.js.map",
+    "static/js/3.98e30e13.chunk.js": "/Seongnam-Citizen-Developers/scaling-journey/static/js/3.98e30e13.chunk.js",
+    "static/js/3.98e30e13.chunk.js.map": "/Seongnam-Citizen-Developers/scaling-journey/static/js/3.98e30e13.chunk.js.map",
+    "index.html": "/Seongnam-Citizen-Developers/scaling-journey/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/Seongnam-Citizen-Developers/scaling-journey/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.df2190c8.chunk.js.LICENSE.txt": "/Seongnam-Citizen-Developers/scaling-journey/static/js/2.df2190c8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f07ebdb9.js",
+    "static/js/2.df2190c8.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.bf2d3b3f.chunk.js"
+  ]
+}
