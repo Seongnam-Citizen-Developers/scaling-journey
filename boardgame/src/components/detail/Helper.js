@@ -1,5 +1,3 @@
-import _ from 'lodash'
-
 export function getgameDetail(game){
   const image_url = game.image_url
   const pattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;

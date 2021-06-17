@@ -7,8 +7,6 @@ import {
 } from "react-router-dom";
 import Akinator from './pages/akinator';
 import Detail from './pages/detail'
-import { createHistory } from 'history'
-import { useRouterHistory } from 'react-router'
 
 function App() {
   return (
