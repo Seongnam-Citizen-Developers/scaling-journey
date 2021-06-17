@@ -1,4 +1,5 @@
 import axios from "axios";
+import _ from "lodash";
 
 export const getReview = async (boardgameId) =>{
   const GET_REVIEW_URL = 'https://axqfvkig95.execute-api.ap-northeast-2.amazonaws.com/beta/lambda/boardgame/comment'
@@ -6,17 +7,12 @@ export const getReview = async (boardgameId) =>{
     params:{
       gameId : boardgameId
     },
-    // headers: { "Access-Control-Allow-Origin": "lor" },
   }
   const res = await axios.get(GET_REVIEW_URL,config)
   const parsedData = JSON.parse(res.data.body)
   const items = parsedData.items
-
-  const reviews = items.map((item)=>{
-    // console.log(item)
-    return {Content: item.Content, id : item.id.substring(0,5),GameId:item.GameId}
-  })
-  return reviews
+  const timesortedReviews = _.sortBy(items,['CreatedTime'])
+  return timesortedReviews
 }
 
 
@@ -24,10 +20,7 @@ export const getReview = async (boardgameId) =>{
 export const postReview = async(gameId,content)=>{
   const POST_REVIEW_URL = 'https://axqfvkig95.execute-api.ap-northeast-2.amazonaws.com/beta/lambda/boardgame/comment'
   const data = {gameId,content}
-  const res = await axios.post(POST_REVIEW_URL,data)
-  const resdata = res.data
-  const newPost = {Content: resdata.Content, id: resdata.id.substring(0,5),GameId:resdata.GameId}
-  console.log('newPost',newPost)
-  return newPost
+  await axios.post(POST_REVIEW_URL,data)
   
+  return
 }

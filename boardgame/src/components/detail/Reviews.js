@@ -18,20 +18,8 @@ const useStyles = makeStyles({
 
 const Reviews = (props) =>{
   const classes = useStyles()
-  // const [reviews, setview] = useState([])
   const reviews = props.reviews
   const [userInput, setInput] = useState('')
-
-  // useEffect(() =>{
-  //   const fetchData = async()=>{
-  //     const fetchedReviews = await getReview(props.boardgameId)
-  //     // setview(adjustedReviews.pageReviews[maxPage])
-  //     console.log('reviews',reviews)
-      
-  //   }
-  //   fetchData()
-  // },[]) 
-  
 
 
   const onChange = (e) =>{
@@ -44,7 +32,6 @@ const Reviews = (props) =>{
       alert('댓글을 입력해주세요')
       return
     }else{
-      // const res = await postReview(props.boardgameId,userInput)
       console.log('gameId',props.boardgameId)
       await postReview(props.boardgameId,userInput)
       await props.updateReviews()
@@ -66,7 +53,7 @@ const Reviews = (props) =>{
       <li
         key={review.id}
       >
-        {review.id} : {review.Content}
+        {review.id.substring(0,5)} : {review.Content}
       </li>
       ) : 
       <div>

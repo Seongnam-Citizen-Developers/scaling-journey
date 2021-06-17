@@ -48,8 +48,8 @@ const Detail = ({match}) => {
       setReview(reviews)
       
       
-      setgameInfo({...gamedata,youtubeURL:"https://www.youtube.com/embed/deA9MuH6ijA"})
-      // setgameInfo({...gamedata,youtubeURL})
+      // setgameInfo({...gamedata,youtubeURL:"https://www.youtube.com/embed/deA9MuH6ijA"})
+      setgameInfo({...gamedata,youtubeURL})
       setloading(true)
     }
     fetchData()
@@ -57,10 +57,8 @@ const Detail = ({match}) => {
 
 
   const updateReviews = async () =>{
-    console.log('실행중임~')
     const reviews = await getReview(boardgameId)
     setReview(reviews)
-    console.log('reviews',reviews)
   }
 
 
