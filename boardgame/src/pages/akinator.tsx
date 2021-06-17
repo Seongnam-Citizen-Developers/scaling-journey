@@ -40,6 +40,8 @@ const Akinator: React.FC = () => {
     } else {
       if (phase !== "noResult") {
         history.push(`/detail/${kGames[0].id}`, )
+      } else {
+        setGames(kGames)
       }
     }
   }

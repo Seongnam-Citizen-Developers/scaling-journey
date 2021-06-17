@@ -12,13 +12,17 @@ const NoResult: React.FC<NoResultProps> = ({games}) => {
   //   setPhase('request')
   // }
   
-  return (
+  return games.length === 0 ? (
     <>
-    {games.map((game, index)=>(
-      <div key={index}>{game.name}
-        {/* <Button onClick={onClick} value={mechanicId}>눌러봐요</Button> */}
-      </div>
-    ))}
+      우린조졌어 아무것도 없어 
+    </>
+  ) : (
+    <>
+      {games.map((game, index) => 
+        index < 3 && (<div key={index}>{game.name}
+          
+        </div>)
+      )}
     </>
   )
 }
