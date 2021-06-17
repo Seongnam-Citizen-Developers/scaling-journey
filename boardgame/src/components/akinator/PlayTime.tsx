@@ -1,5 +1,6 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
+import { blueGrey } from "@material-ui/core/colors";
 
 
 interface PlayTimeProps {
@@ -16,25 +17,33 @@ const PlayTime: React.FC<PlayTimeProps> = ({setPhase, gnt, setGnt, lxt, setLxt})
   
   const onMinClick = (data: any) => {
     console.log(data.currentTarget.value)
-    setGnt(Number(data.currentTarget.value))
+    if (gnt === Number(data.currentTarget.value)){
+      setGnt()
+    } else {
+      setGnt(Number(data.currentTarget.value))
+    }
   }
   
   const onMaxClick = (data: any) => {
     console.log(data.currentTarget.value)
-    setLxt(Number(data.currentTarget.value))
+    if (lxt === Number(data.currentTarget.value)){
+      setLxt()
+    } else {
+      setLxt(Number(data.currentTarget.value))
+    }
   }
   
   return (
     <>
     {minTimeList.map((time,index)=>(
       <div key={index}>
-        <Button value={time} onClick={onMinClick}>{time}분</Button>
+        <Button variant='outlined' value={time} onClick={onMinClick} style={time === gnt? {backgroundColor: '#ececec'}:{}}>{time}분</Button>
       </div>
     ))}
     ----------------------------
     {maxTimeList.map((time,index)=>(
       <div key={index}>
-        <Button value={time} onClick={onMaxClick}>{time}분</Button>
+        <Button variant='outlined' value={time} onClick={onMaxClick} style={time === lxt? {backgroundColor: '#ececec'}:{}}>{time}분</Button>
       </div>
     ))}
     <Button onClick={()=>{setPhase('mechanics')}}> 다음 </Button>

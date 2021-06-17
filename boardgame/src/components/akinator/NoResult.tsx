@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom"
 import { game } from "../../lib/boardgameAtlas/interfaces"
 
 interface NoResultProps {
@@ -11,7 +12,8 @@ const NoResult: React.FC<NoResultProps> = ({games}) => {
   //   setMechanics(data.currentTarget.value)
   //   setPhase('request')
   // }
-  
+  const history = useHistory()
+
   return games.length === 0 ? (
     <>
       우린조졌어 아무것도 없어 
@@ -19,8 +21,11 @@ const NoResult: React.FC<NoResultProps> = ({games}) => {
   ) : (
     <>
       {games.map((game, index) => 
-        index < 3 && (<div key={index}>{game.name}
-          
+        index < 3 && (<div key={index} onClick={()=>{
+          history.push(`/detail/${game.id}`, )
+        }}>
+          <img src={game.image_url} alt="" width="40%" />
+          {game.name}
         </div>)
       )}
     </>

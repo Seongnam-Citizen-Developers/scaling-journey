@@ -14,7 +14,6 @@ const Akinator: React.FC = () => {
 
   const styles = useStyles()
   const [phase, setPhase] = useState<"category"|"player"|"playTime"|"mechanics"|"request"|"noResult">('category')
-  const [url, setUrl] = useState<string>('')
   const [numOfPeople, setNumOfPeople] = useState<number>()
   const [gnt, setGnt] = useState<number>()
   const [lxt, setLxt] = useState<number>()
@@ -45,10 +44,7 @@ const Akinator: React.FC = () => {
       }
     }
   }
-  useEffect(()=>{
 
-    setUrl(games?.[0] ? games?.[0].image_url : '')
-  }, [games])
   
   useEffect(()=>{
     if (phase==="request") {
@@ -73,6 +69,15 @@ const Akinator: React.FC = () => {
     }
   },[phase])
 
+  const reset = () => {
+    setNumOfPeople(undefined)
+    setGnt(undefined)
+    setLxt(undefined)
+    setCategory(undefined)
+    setMechanics(undefined)
+    setGames([])
+    setPhase('category')
+  }
   // getBoardgames
   return (
     <>
@@ -100,10 +105,9 @@ const Akinator: React.FC = () => {
       }
       {/* <Button onClick={onSubmit}>사진</Button> */}
       <Button onClick={()=>{
-        setGames([])
-        setPhase("category")
+        reset()
       }}>리셋</Button>
-      <img src={url} alt="" width="100%" />
+      
     </>
   )
 }
