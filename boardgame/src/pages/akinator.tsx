@@ -27,7 +27,6 @@ const Akinator: React.FC = () => {
   async function requestGetBoardgame(config: any) {
     const games = await getBoardgames(config)
     console.log(games)
-
     const pattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     const kGames = games.filter(game => { 
       return (game.tags.filter(tag => {
@@ -57,6 +56,7 @@ const Akinator: React.FC = () => {
         lt_max_playtime: lxt ? lxt+1 : undefined,
         gt_max_players: numOfPeople ? numOfPeople-1 : undefined,
         lt_min_players: numOfPeople ? numOfPeople+1 : undefined,
+        random: 'true'
       }
       requestGetBoardgame(config)
     } else if (phase==="noResult") {
@@ -66,6 +66,7 @@ const Akinator: React.FC = () => {
         lt_max_playtime: lxt ? lxt+1 : undefined,
         gt_max_players: numOfPeople ? numOfPeople-1 : undefined,
         lt_min_players: numOfPeople ? numOfPeople+1 : undefined,
+        random: 'true'
       }
       requestGetBoardgame(config)
     }
