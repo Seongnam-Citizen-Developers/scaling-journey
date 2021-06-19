@@ -69,7 +69,8 @@ const Akinator: React.FC = () => {
       }
       requestGetBoardgame(config)
     }
-  },[phase, category, gnt, lxt, numOfPeople, mechanics, requestGetBoardgame])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[phase, category, gnt, lxt, numOfPeople, mechanics])
 
   const reset = () => {
     setNumOfPeople(undefined)
