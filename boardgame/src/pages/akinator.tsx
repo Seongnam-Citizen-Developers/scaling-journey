@@ -10,6 +10,11 @@ import NoResult from "../components/akinator/NoResult"
 import { game } from "../lib/boardgameAtlas/interfaces";
 import { useHistory, useLocation } from 'react-router-dom';
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+}
 const Akinator: React.FC = () => {
 
   // const styles = useStyles()
@@ -39,7 +44,8 @@ const Akinator: React.FC = () => {
       setPhase('noResult')
     } else {
       if (phase !== "noResult") {
-        history.push(`${location.pathname}detail/${kGames[0].id}`, )
+        let idx: number = getRandomInt(0, kGames.length)
+        history.push(`${location.pathname}detail/${kGames[idx].id}`, )
       } else {
         setGames(kGames)
       }
@@ -56,7 +62,6 @@ const Akinator: React.FC = () => {
         lt_max_playtime: lxt ? lxt+1 : undefined,
         gt_max_players: numOfPeople ? numOfPeople-1 : undefined,
         lt_min_players: numOfPeople ? numOfPeople+1 : undefined,
-        random: 'true'
       }
       requestGetBoardgame(config)
     } else if (phase==="noResult") {
@@ -66,7 +71,6 @@ const Akinator: React.FC = () => {
         lt_max_playtime: lxt ? lxt+1 : undefined,
         gt_max_players: numOfPeople ? numOfPeople-1 : undefined,
         lt_min_players: numOfPeople ? numOfPeople+1 : undefined,
-        random: 'true'
       }
       requestGetBoardgame(config)
     }
