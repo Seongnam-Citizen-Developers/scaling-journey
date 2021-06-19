@@ -34,17 +34,20 @@ const PlayTime: React.FC<PlayTimeProps> = ({setPhase, gnt, setGnt, lxt, setLxt})
   
   return (
     <>
+    최소 플탐
     {minTimeList.map((time,index)=>(
       <div key={index}>
         <Button variant='outlined' value={time} onClick={onMinClick} style={time === gnt? {backgroundColor: '#ececec'}:{}}>{time}분</Button>
       </div>
     ))}
     ----------------------------
+    최대 플탐
     {maxTimeList.map((time,index)=>(
       <div key={index}>
         <Button variant='outlined' value={time} onClick={onMaxClick} style={time === lxt? {backgroundColor: '#ececec'}:{}}>{time}분</Button>
       </div>
     ))}
+    모르겠으면 그냥 다음 눌러요
     <Button onClick={()=>{setPhase('mechanics')}}> 다음 </Button>
     </>
   )

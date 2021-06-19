@@ -19,6 +19,7 @@ const Players: React.FC<PlayersProps> = ({setPhase, setNumOfPeople, numOfPeople}
   
   return (
     <>
+    몇명?
     {numList.map((num,index)=>(
       <div key={index}>
         <Button variant='outlined' value={num} onClick={onClick}>{num}명</Button>

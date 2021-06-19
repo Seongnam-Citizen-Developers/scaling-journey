@@ -70,6 +70,7 @@ const Category: React.FC<CategoryProps> = ({setPhase, category, setCategory}) =>
   
   return (
     <>
+    카테고리
     {categoryIdList.map((categoryId, index)=>(
       <div key={index}>
         <Button variant='outlined' onClick={onClick} value={categoryId}>{categoryMappingTable[categoryId].comment}</Button>
