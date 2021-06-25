@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { game } from '../../lib/boardgameAtlas/interfaces'
 import { getgameDetail } from '../detail/Helper'
 
@@ -37,7 +37,6 @@ const NoResult: React.FC<NoResultProps> = ({ games }) => {
     setRandomIndexes(getRandomIndexes(games))
   }, [games])
   const history = useHistory()
-  const location = useLocation()
   return games.length === 0 ? (
     <></>
   ) : (

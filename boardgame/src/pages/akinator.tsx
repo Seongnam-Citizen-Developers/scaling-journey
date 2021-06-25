@@ -8,7 +8,7 @@ import Category from '../components/akinator/Category'
 import Mechanics from '../components/akinator/Mechanics'
 import NoResult from '../components/akinator/NoResult'
 import { game } from '../lib/boardgameAtlas/interfaces'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function getRandomInt(min, max) {
   min = Math.ceil(min)
@@ -27,7 +27,6 @@ const Akinator: React.FC = () => {
   const [mechanics, setMechanics] = useState<string>()
   const [games, setGames] = useState<game[]>([])
   const history = useHistory()
-  const location = useLocation()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   async function requestGetBoardgame(config: any) {
