@@ -21,8 +21,8 @@ const Akinator: React.FC = () => {
     'category' | 'player' | 'playTime' | 'mechanics' | 'request' | 'noResult'
   >('category')
   const [numOfPeople, setNumOfPeople] = useState<number>()
-  const [gnt, setGnt] = useState<number>()
-  const [lxt, setLxt] = useState<number>()
+  const [gnt, setGnt] = useState<number>(10)
+  const [lxt, setLxt] = useState<number>(30)
   const [category, setCategory] = useState<string>()
   const [mechanics, setMechanics] = useState<string>()
   const [games, setGames] = useState<game[]>([])
@@ -32,8 +32,8 @@ const Akinator: React.FC = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   async function requestGetBoardgame(config: any) {
     const games = await getBoardgames(config)
-    console.log(games)
-    const pattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/
+
+    const pattern = /[가-힣]/
     const kGames = games.filter(game => {
       return (
         game.tags.filter(tag => {
@@ -41,13 +41,14 @@ const Akinator: React.FC = () => {
         }).length !== 0
       )
     })
+    console.log(kGames)
 
     if (kGames.length === 0) {
       setPhase('noResult')
     } else {
       if (phase !== 'noResult') {
         let idx: number = getRandomInt(0, kGames.length)
-        history.push(`${location.pathname}detail/${kGames[idx].id}`)
+        history.push(`/detail/${kGames[idx].id}`)
       } else {
         setGames(kGames)
       }
@@ -63,6 +64,7 @@ const Akinator: React.FC = () => {
         lt_max_playtime: lxt ? lxt + 1 : undefined,
         gt_max_players: numOfPeople ? numOfPeople - 1 : undefined,
         lt_min_players: numOfPeople ? numOfPeople + 1 : undefined,
+        limit: 100,
       }
       requestGetBoardgame(config)
     } else if (phase === 'noResult') {
@@ -71,6 +73,7 @@ const Akinator: React.FC = () => {
         lt_max_playtime: lxt ? lxt + 1 : undefined,
         gt_max_players: numOfPeople ? numOfPeople - 1 : undefined,
         lt_min_players: numOfPeople ? numOfPeople + 1 : undefined,
+        limit: 100,
       }
       requestGetBoardgame(config)
     }
@@ -79,8 +82,8 @@ const Akinator: React.FC = () => {
 
   const reset = () => {
     setNumOfPeople(undefined)
-    setGnt(undefined)
-    setLxt(undefined)
+    setGnt(10)
+    setLxt(30)
     setCategory(undefined)
     setMechanics(undefined)
     setGames([])
@@ -88,7 +91,7 @@ const Akinator: React.FC = () => {
   }
   // getBoardgames
   return (
-    <div style={{ width: '100%' }}>
+    <div>
       {phase === 'category' ? (
         <>
           <Category

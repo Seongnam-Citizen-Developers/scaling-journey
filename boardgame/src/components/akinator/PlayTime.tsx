@@ -10,7 +10,6 @@ interface PlayTimeProps {
   lxt: number | undefined
   setLxt: any
 }
-const wrapperStyle = { width: 400, margin: 50 }
 
 const PlayTime: React.FC<PlayTimeProps> = ({
   setPhase,
@@ -19,28 +18,15 @@ const PlayTime: React.FC<PlayTimeProps> = ({
   lxt,
   setLxt,
 }) => {
-  const minTimeList = [10, 30, 60, 120]
-  const maxTimeList = [30, 60, 120, 180]
-  const [sliderValues, setSliderValues] = useState<number[]>([0, 0])
-  const [sliderValue, setSliderValue] = useState<number>(10)
-  const onMinClick = (data: any) => {
-    console.log(data.currentTarget.value)
-    if (gnt === Number(data.currentTarget.value)) {
-      setGnt()
-    } else {
-      setGnt(Number(data.currentTarget.value))
-    }
-  }
-  const onMaxClick = (data: any) => {
-    console.log(data.currentTarget.value)
-    if (lxt === Number(data.currentTarget.value)) {
-      setLxt()
-    } else {
-      setLxt(Number(data.currentTarget.value))
-    }
-  }
+  const [sliderValues, setSliderValues] = useState<number[]>([gnt, lxt])
+
   const handleChange = (event, value) => {
     setSliderValues(value)
+    if (gnt !== value[0]) {
+      setGnt(value[0])
+    } else if (lxt !== value[1]) {
+      setLxt(value[1])
+    }
   }
 
   const valuetext = value => {
@@ -48,44 +34,19 @@ const PlayTime: React.FC<PlayTimeProps> = ({
   }
   return (
     <>
-      최소 플탐
-      <div style={wrapperStyle}>
-        <Typography id="range-slider" gutterBottom>
-          Temperature range
-        </Typography>
+      플레이 타임
+      <div>
         <Slider
           value={sliderValues}
           onChange={handleChange}
           valueLabelDisplay="auto"
           aria-labelledby="range-slider"
           getAriaValueText={valuetext}
+          step={10}
+          min={10}
+          max={180}
         />
       </div>
-      {minTimeList.map((time, index) => (
-        <div key={index}>
-          <Button
-            variant="outlined"
-            value={time}
-            onClick={onMinClick}
-            style={time === gnt ? { backgroundColor: '#ececec' } : {}}
-          >
-            {time}분
-          </Button>
-        </div>
-      ))}
-      ---------------------------- 최대 플탐
-      {maxTimeList.map((time, index) => (
-        <div key={index}>
-          <Button
-            variant="outlined"
-            value={time}
-            onClick={onMaxClick}
-            style={time === lxt ? { backgroundColor: '#ececec' } : {}}
-          >
-            {time}분
-          </Button>
-        </div>
-      ))}
       모르겠으면 그냥 다음 눌러요
       <Button
         onClick={() => {
