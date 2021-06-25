@@ -8,6 +8,7 @@ import { getgameDetail } from "../components/detail/Helper";
 import YoutubeRequest from "../lib/Youtube/apis";
 import { getReview } from "../lib/sungnamDevelopers/apis";
 import {getBoardgames} from "../lib/boardgameAtlas/apis"
+import { CircularProgress } from '@material-ui/core';
 
 
 const useStyles = makeStyles({
@@ -15,13 +16,18 @@ const useStyles = makeStyles({
   box :{
     margin : "5% 5% 5% 5%",
     padding: "3% 3% 3% 3%",
-    border: "2px solid black",
+    // border: "2px solid black",
     borderRadius:"10px",
   },
-
+  main : {
+    // border: '2px solid blue',
+  },
+  loadingArea:{
+    textAlign:"center"
+  },
   text : {
     textAlign: "center",
-    color : "red",
+    color : "#805A37",
   },
   images : {
     width: "100%",
@@ -64,12 +70,13 @@ const Detail = ({match}) => {
 
   return (
     <Container>
-      <div className={classes.box}>
+      {/* <div className={classes.box}> */}
+      <div className={classes.main}>
         {!loading ? 
-        <>
+        <div className={classes.loadingArea}>
           <h1 className={classes.text}>로딩중</h1>
-
-        </> :
+          <CircularProgress/>
+        </div> :
         <>
           <h1 className={classes.text}>{game.name}</h1>
           <hr></hr>

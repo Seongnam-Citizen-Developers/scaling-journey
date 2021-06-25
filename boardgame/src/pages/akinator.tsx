@@ -45,7 +45,7 @@ const Akinator: React.FC = () => {
     } else {
       if (phase !== "noResult") {
         let idx: number = getRandomInt(0, kGames.length)
-        history.push(`${location.pathname}detail/${kGames[idx].id}`, )
+        history.push(`/detail/${kGames[idx].id}`, )
       } else {
         setGames(kGames)
       }

@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   detailArea:{
-    border: "2px solid blue",
     padding : "3% 3% 3% 3%",
   },
   image : {

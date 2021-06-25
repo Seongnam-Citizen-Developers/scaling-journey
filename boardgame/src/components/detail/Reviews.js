@@ -7,7 +7,6 @@ import {postReview} from '../../lib/sungnamDevelopers/apis'
 const useStyles = makeStyles({
   reviewArea :{
     padding : "3% 3% 3% 3%",
-    border : "2px solid red"
   },
   formArea :{
     width: "100%"

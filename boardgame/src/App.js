@@ -5,17 +5,24 @@ import {
   Route,
   // Link
 } from "react-router-dom";
+import { Container } from '@material-ui/core';
 import Akinator from './pages/akinator';
-import Detail from './pages/detail'
+import Detail from './pages/detail';
+import Index from './pages/Index'
+
+
 
 function App() {
   return (
-    <Router basename="/scaling-journey">
-        <Switch>
-          <Route path="/detail/:boardgameId" component={Detail} />
-          <Route path="/" component={Akinator} />
-        </Switch>
-    </Router>
+      <Container>
+        <Router basename="/scaling-journey">
+            <Switch>
+              <Route path="/detail/:boardgameId" component={Detail} />
+              <Route path="/akinator" component={Akinator} />
+              <Route path="/" component={Index} />
+            </Switch>
+        </Router>
+      </Container>
   );
 }
 

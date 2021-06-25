@@ -23,7 +23,7 @@ const NoResult: React.FC<NoResultProps> = ({games}) => {
       완벽하게 일치하는건 없고 대충 이중에서 하나 클릭하세요
       {games.map((game, index) => 
         index < 3 && (<div key={index} onClick={()=>{
-          history.push(`${location.pathname}detail/${game.id}`, )
+          history.push(`detail/${game.id}`, )
         }}>
           <img src={game.image_url} alt="" width="40%" />
           {getgameDetail(game).name}
