@@ -1,47 +1,50 @@
-import React from "react";
-import Button from '@material-ui/core/Button';
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core'
 
-const categoryMappingTable: { [key: string]: {name: string; comment: string} } = {
-   "hBqZ3Ar4RJ": {
-     name: "Abstract",
-     comment: "체스같은 전략껨"
-   },
-   "MWoxgHrOJD": {
-     name: "Animals",
-     comment: "동물나오는껨"
-   },
-   "PinhJrhnxU": {
-     name: "Bluffing",
-     comment: "속임수껨"
-   },
-   "eX8uuNlQkQ": {
-     name: "Card Game",
-     comment: "카드껨"
-   },
-   "329DxyFL9D": {
-     name: "Civilization",
-     comment: "문명류껨"
-   },
-   "ZTneo8TaIO": {
-     name: "Fantasy",
-     comment: "판타지껨"
-   },
-   "Kk70K0524Z": {
-     name: "Murder/Mystery",
-     comment: "미스터리/추리"
-   },
-   "X8J7RM6dxX": {
-     name: "Party Game",
-     comment: "파티껨"
-   },
-   "WVMOS3s2pb": {
-     name: "Puzzle",
-     comment: "퍼즐"
-   },
-   "3B3QpKvXD3": {
-     name: "Sci-Fi",
-     comment: "SF"
-   },
+const categoryMappingTable: {
+  [key: string]: { name: string; comment: string }
+} = {
+  hBqZ3Ar4RJ: {
+    name: 'Abstract',
+    comment: '체스같은 전략껨',
+  },
+  MWoxgHrOJD: {
+    name: 'Animals',
+    comment: '동물나오는껨',
+  },
+  PinhJrhnxU: {
+    name: 'Bluffing',
+    comment: '속임수껨',
+  },
+  eX8uuNlQkQ: {
+    name: 'Card Game',
+    comment: '카드껨',
+  },
+  '329DxyFL9D': {
+    name: 'Civilization',
+    comment: '문명류껨',
+  },
+  ZTneo8TaIO: {
+    name: 'Fantasy',
+    comment: '판타지껨',
+  },
+  Kk70K0524Z: {
+    name: 'Murder/Mystery',
+    comment: '미스터리/추리',
+  },
+  X8J7RM6dxX: {
+    name: 'Party Game',
+    comment: '파티껨',
+  },
+  WVMOS3s2pb: {
+    name: 'Puzzle',
+    comment: '퍼즐',
+  },
+  '3B3QpKvXD3': {
+    name: 'Sci-Fi',
+    comment: 'SF',
+  },
 }
 
 interface CategoryProps {
@@ -50,34 +53,57 @@ interface CategoryProps {
   setCategory: any
 }
 
-const Category: React.FC<CategoryProps> = ({setPhase, category, setCategory}) => {
-  const categoryIdList = ["hBqZ3Ar4RJ",
-  "MWoxgHrOJD",
-  "PinhJrhnxU",
-  "eX8uuNlQkQ",
-  "329DxyFL9D",
-  "ZTneo8TaIO",
-  "Kk70K0524Z",
-  "X8J7RM6dxX",
-  "WVMOS3s2pb",
-  "3B3QpKvXD3"]
-
+const Category: React.FC<CategoryProps> = ({
+  setPhase,
+  category,
+  setCategory,
+}) => {
+  const categoryIdList = [
+    'hBqZ3Ar4RJ',
+    'MWoxgHrOJD',
+    'PinhJrhnxU',
+    'eX8uuNlQkQ',
+    '329DxyFL9D',
+    'ZTneo8TaIO',
+    'Kk70K0524Z',
+    'X8J7RM6dxX',
+    'WVMOS3s2pb',
+    '3B3QpKvXD3',
+  ]
+  const style = useStyles()
   const onClick = (data: any) => {
     console.log(data.currentTarget.value)
     setPhase('player')
     setCategory(data.currentTarget.value)
   }
-  
+
   return (
     <>
-    카테고리
-    {categoryIdList.map((categoryId, index)=>(
-      <div key={index}>
-        <Button variant='outlined' onClick={onClick} value={categoryId}>{categoryMappingTable[categoryId].comment}</Button>
-      </div>
-    ))}
+      카테고리
+      {categoryIdList.map((categoryId, index) => (
+        <div key={index}>
+          <Button
+            variant="outlined"
+            onClick={onClick}
+            fullWidth
+            value={categoryId}
+            className={style.button}
+          >
+            {categoryMappingTable[categoryId].comment}
+          </Button>
+        </div>
+      ))}
     </>
   )
 }
 
 export default Category
+
+const useStyles = makeStyles({
+  button: {
+    marginTop: '10px',
+    height: '50px',
+    background:
+      'url("https://ssl.pstatic.net/tveta/libs/1344/1344393/8614e7759ffd83afddba_20210621104000824.jpg") #00D fixed',
+  },
+})
