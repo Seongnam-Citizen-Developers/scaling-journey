@@ -1,18 +1,25 @@
 /* 글로벌하게 적용되는 css */
 
 @font-face {
-  font-family: 'ONE-Mobile-POP';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+  font-family: "ONE-Mobile-POP";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
-body{
-  background-color: rgb(255, 218, 185);
-  font-family: 'ONE-Mobile-POP';
+
+@font-face {
+  font-family: "EliceDigitalBaeum_Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-
-
+body {
+  background-color: ghostwhite;
+  font-family: "EliceDigitalBaeum_Bold";
+}
 
 .App {
   text-align: center;
@@ -51,4 +58,13 @@ body{
   to {
     transform: rotate(360deg);
   }
+}
+
+.MuiSlider-markLabel {
+  color: white !important;
+  font-family: "EliceDigitalBaeum_Bold" !important;
+}
+
+.PrivateValueLabel-label-22 {
+  font-size: 0.1rem !important;
 }
