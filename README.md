@@ -62,7 +62,7 @@
 
 #### Front-end 
 
-- **React **
+- **React**
 
   <br>
 
