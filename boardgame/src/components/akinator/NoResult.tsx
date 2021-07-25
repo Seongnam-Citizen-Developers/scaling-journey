@@ -29,11 +29,6 @@ function getRandomIndexes(games: game[]): number[] {
 }
 
 const NoResult: React.FC<NoResultProps> = ({ games }) => {
-  // const onClick = (data: any) => {
-  //   console.log(data.currentTarget.value)
-  //   setMechanics(data.currentTarget.value)
-  //   setPhase('request')
-  // }
   const style = useStyles();
   const [randomIndexes, setRandomIndexes] = useState<number[]>([]);
   useEffect(() => {

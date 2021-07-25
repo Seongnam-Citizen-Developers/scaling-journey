@@ -31,7 +31,6 @@ const Reviews = (props) =>{
       alert('댓글을 입력해주세요')
       return
     }else{
-      console.log('gameId',props.boardgameId)
       await postReview(props.boardgameId,userInput)
       await props.updateReviews()
 
@@ -56,7 +55,7 @@ const Reviews = (props) =>{
       </li>
       ) : 
       <div>
-        <p>아직 댓글이 없음둥</p>
+        <p>아직 댓글이 없습니다.</p>
       </div>
 
 

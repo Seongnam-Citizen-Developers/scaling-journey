@@ -17,7 +17,6 @@ const Players: React.FC<PlayersProps> = ({
   const numList = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const onClick = (data: any) => {
-    console.log(data.currentTarget.value);
     setPhase("playTime");
     setNumOfPeople(Number(data.currentTarget.value));
   };

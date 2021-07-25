@@ -33,7 +33,6 @@ const Mechanics: React.FC<MechanicsProps> = ({
   const mechanicsIdList = ["9mNukNBxfZ", "BGrhzIN69D", "9jnCsVuRat"];
 
   const onClick = (data: any) => {
-    console.log(data.currentTarget.value);
     setMechanics(data.currentTarget.value);
     setPhase("request");
   };

@@ -39,7 +39,6 @@ const Akinator: React.FC = () => {
         }).length !== 0
       );
     });
-    console.log(kGames);
 
     if (kGames.length === 0) {
       setPhase("noResult");

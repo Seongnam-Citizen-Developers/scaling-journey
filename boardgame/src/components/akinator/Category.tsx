@@ -72,7 +72,6 @@ const Category: React.FC<CategoryProps> = ({
   ];
   const style = useStyles();
   const onClick = (data: any) => {
-    console.log(data.currentTarget.value);
     setPhase("player");
     setCategory(data.currentTarget.value);
   };

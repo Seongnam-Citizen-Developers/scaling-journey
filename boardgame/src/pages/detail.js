@@ -49,16 +49,13 @@ const Detail = ({match}) => {
   useEffect(()=>{
     const fetchData = async()=>{ 
       const result = await getBoardgames({ids:boardgameId})
-      // console.log('result',result)
       const gamedata = getgameDetail(result[0])
-      // console.log('게임디테일',gamedata)
       const youtubeURL = await YoutubeRequest(gamedata.name)
       const reviews = await getReview(boardgameId)
 
       setReview(reviews)
       
       
-      // setgameInfo({...gamedata,youtubeURL:"https://www.youtube.com/embed/deA9MuH6ijA"})
       setgameInfo({...gamedata,youtubeURL})
       setloading(true)
     }
