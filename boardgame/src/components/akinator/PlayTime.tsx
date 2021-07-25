@@ -66,7 +66,7 @@ const PlayTime: React.FC<PlayTimeProps> = ({
         />
       </div>
       <div className={style.nextArea}>
-        설정을 완료하셨으면 "다음" 버튼을 눌러주세요
+        설정이 끝났으면 "다음" 버튼을 눌러주세요
         <Button
           className={style.button}
           variant="contained"

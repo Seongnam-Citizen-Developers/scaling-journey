@@ -82,7 +82,7 @@ const Detail = ({match}) => {
       <div className={classes.main}>
         {!loading ? 
         <div className={classes.loadingArea}>
-          <h2 className={classes.text}>최고의 게임을 찾았습니다!</h2>
+          <h2 className={classes.text}>게임을 찾았습니다!</h2>
           <CircularProgress/>
         </div> :
         <>

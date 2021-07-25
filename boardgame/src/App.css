@@ -7,9 +7,30 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Cafe24Ssurround";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "EliceDigitalBaeum_Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  background-color: #ffd7b5;
-  font-family: "ONE-Mobile-POP";
+  /* background-color: #ffd7b5; */
+  background-color: ghostwhite;
+  /* background-color: rgb(47, 33, 32); */
+  /* font-family: "ONE-Mobile-POP"; */
+  font-family: "EliceDigitalBaeum_Bold";
+  /* color: white; */
 }
 
 .App {
@@ -52,8 +73,8 @@ body {
 }
 
 .MuiSlider-markLabel {
-  color: black !important;
-  font-family: "ONE-Mobile-POP" !important;
+  color: white !important;
+  font-family: "EliceDigitalBaeum_Bold" !important;
 }
 
 .PrivateValueLabel-label-22 {
