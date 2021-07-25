@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/scaling-journey/static/css/main.4b341ecb.chunk.css",
+    "main.css": "/scaling-journey/static/css/main.fd8464d8.chunk.css",
     "main.js": "/scaling-journey/static/js/main.76176614.chunk.js",
     "main.js.map": "/scaling-journey/static/js/main.76176614.chunk.js.map",
     "runtime-main.js": "/scaling-journey/static/js/runtime-main.67b26775.js",
@@ -10,14 +10,14 @@
     "static/js/3.a2728e2e.chunk.js": "/scaling-journey/static/js/3.a2728e2e.chunk.js",
     "static/js/3.a2728e2e.chunk.js.map": "/scaling-journey/static/js/3.a2728e2e.chunk.js.map",
     "index.html": "/scaling-journey/index.html",
-    "static/css/main.4b341ecb.chunk.css.map": "/scaling-journey/static/css/main.4b341ecb.chunk.css.map",
+    "static/css/main.fd8464d8.chunk.css.map": "/scaling-journey/static/css/main.fd8464d8.chunk.css.map",
     "static/js/2.13318328.chunk.js.LICENSE.txt": "/scaling-journey/static/js/2.13318328.chunk.js.LICENSE.txt",
     "static/media/logo.542eae4b.png": "/scaling-journey/static/media/logo.542eae4b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.67b26775.js",
     "static/js/2.13318328.chunk.js",
-    "static/css/main.4b341ecb.chunk.css",
+    "static/css/main.fd8464d8.chunk.css",
     "static/js/main.76176614.chunk.js"
   ]
 }
