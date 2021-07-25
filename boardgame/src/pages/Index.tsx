@@ -36,7 +36,7 @@ const Index: React.FC = () => {
       <div className={classes.imgbox}>
         <img src={logo} alt="logo" width="100%" height="100%"></img>
       </div>
-      <h1 className={classes.title}>보드게임 탐정 : 셜록 </h1>
+      <h1 className={classes.title}>셜록: 보드게임 탐정</h1>
       <div className={classes.detail}>
         <p>재미있는 보드게임을 찾고 계신가요??</p>
         <p>저희가 추천해드릴께요!!</p>
