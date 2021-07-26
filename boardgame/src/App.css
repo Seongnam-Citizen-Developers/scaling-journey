@@ -57,10 +57,12 @@ body {
 }
 
 .MuiSlider-markLabel {
-  color: white !important;
+  color: black !important;
   font-family: "EliceDigitalBaeum_Bold" !important;
 }
 
-.PrivateValueLabel-label-22 {
-  font-size: 0.1rem !important;
+span[class*="PrivateValueLabel-label"] {
+  color: #fff;
+  transform: rotate(45deg);
+  font-size: 0.1rem;
 }
