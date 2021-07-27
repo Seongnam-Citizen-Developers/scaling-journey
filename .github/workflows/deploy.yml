@@ -13,10 +13,10 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 12.x
-      - name: Make env.production
+      - name: Make .env.production
         run: cd boardgame && echo -e {{ secrets.ENV_PRODUCTION }} > .env.production
       - name: Where am I
-        run: cd boardgame && ls -l
+        run: cd boardgame && cat .env.production
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
