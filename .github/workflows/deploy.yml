@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 12.x
       - name: Make env.production
-        run: cd boardgame && echo -e "REACT_APP_CLIENT_ID=4L5B0WNj2H\nREACT_APP_CLIENT_SECRET=27c430582a05745abbf6363ae59b3127\nREACT_APP_YOUTUBE_API_KEY=AIzaSyA4bsWgPXVsprXWm0nk_RheeQqFKoEa51Q" > .env.production
+        run: cd boardgame && echo -e {{ secrets.ENV_PRODUCTION }} > .env.production
       - name: Where am I
         run: cd boardgame && ls -l
       - name: Cache node_modules
