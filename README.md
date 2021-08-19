@@ -70,8 +70,8 @@
 
   <br>
 
-#### Back-end
-
+#### Cloud
+- **AWS LAMBDA**
 - **AWS Dynamo DB**
   <br>
 
